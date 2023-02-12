@@ -1,5 +1,7 @@
 # Lab Report 2 - Servers and Bugs
+
 ## part 1
+
 ```
 import java.io.IOException;
 import java.net.URI;
@@ -31,15 +33,21 @@ class StringServer {
    }
 }
 ```
+
 ![image](https://user-images.githubusercontent.com/86742001/218337147-15a064f4-58e0-473d-a008-2f81c86bdc6f.png)
+
 * **Which methods in your code are called?**: handleRequest and main
 * **What are the relevant arguments to those methods, and the values of any relevant fields of the class?**: The argument to the handleRequest method is the URL, "http://localhost:4002/add-message?s=Hello", and the argument to the main method is the port number, [4002]. The values of fields are port number, [4002], the content, "Hello", and the output, "Hello\n". 
 * **How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.**: The URL changes from "http://localhost:4002" to "http://localhost:4002/add-message?s=Hello", the content changes from "" to "Hello", and the output changes from empty to "Hello\n".
+
 ![image](https://user-images.githubusercontent.com/86742001/218337288-c4043f22-1b36-4f64-a856-eac144f54cb4.png)
+
 * **Which methods in your code are called?**: handleRequest and main
 * **What are the relevant arguments to those methods, and the values of any relevant fields of the class?**: The argument to the handleRequest method is the URL, "http://localhost:4002/add-message?s=How%are%you", and the argument to the main method is the port number, [4002]. The values of fields are port number, [4002], the content, "How are you", and the output, "Hello\nHow are you\n". 
 * **How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.**: The URL changes from "http://localhost:4002/add-message?s=Hello" to "http://localhost:4002/add-message?s=How%are%you", the content changes from "Hello" to "How are you", and the output changes from "Hello\n" to "Hello\nHow are you\n".
+
 ## part 2
+
 * **failure-inducing input**
 ```
 @Test
