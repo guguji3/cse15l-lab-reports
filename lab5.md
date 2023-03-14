@@ -5,15 +5,15 @@
 - -name: Searches for files or directories with a specific name
 
 **example1**
-```
+``` console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -name HandRHawaii.txt
 ./written_2/travel_guides/berlitz1/HandRHawaii.txt
 ```
 
-I use `grep -r` to search "Lucayans" under `skill-demo-data/written_2`, it searches not only in the specified files, but also in all files under the directory
+I use `find . -name` to search `HandRHawaii.txt` under `skill-demo-data`, it shows that the file is inside the skill-demo-data/written_2/travel_guides/berlitz1
 
 **example2**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -name "*.txt"
 ./written_2/non-fiction/OUP/Berk/ch2.txt
 ./written_2/non-fiction/OUP/Berk/ch1.txt
@@ -241,7 +241,7 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -name "*.txt"
 ./written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
 ```
 
-I use `grep -r` to search "Italy has" under `skill-demo-data/written_2`, instead of manually searching through each file, I can use `grep -r` to automate the process and quickly find the information I need.
+I use `find . -name` to search `"*.txt"` under skill-demo-data, it searches for all files with a ".txt" extension in the skill-demo-data and its subdirectories.
 
 - Base on examples, `find -name` can be particularly useful when you need to search for files or directories with a specific name. It takes a string argument that specifies the name of the file or directory to search for.
 
@@ -249,7 +249,7 @@ I use `grep -r` to search "Italy has" under `skill-demo-data/written_2`, instead
 - -type: Searches for files of a specific type
 
 **example1**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -type f
 ./.git/config
 ./.git/objects/pack/pack-b98cb6a4ca64cc7b2944f0fa07d3e03927d66064.pack
@@ -503,10 +503,10 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -type f
 ./written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
 
 ```
-I use the `grep -c` to count the number of lines that match "Italy" under `skill-demo-data/written_2/travel_guides/berlitz1/*.txt`, it shows HistoryFrance.txt has 3 matched lines, HistoryGreek.txt has 1 matched line, and so on
+I use the `find . -type f` to search for all regular files in the skill-demo-data and its subdirectories
 
 **example2**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -type d
 .
 ./.git
@@ -538,21 +538,24 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -type d
 ./written_2/travel_guides/berlitz1
 ./written_2/travel_guides/berlitz2
 ```
-I use the `grep -c` to count the number of lines that match "Lucayans" under `skill-demo-data/written_2/travel_guides/berlitz1/*.txt`, it shows only Bahamas-History.txt has 2 matched lines.
+I use the `find . -type d` to searches for directories
 
-- Base on examples, `find -type`can be useful when you want to search for files of a specific type. It allows you to filter the search results based on the type of file
+- Base on examples, `find -type`can be useful when you want to search for files of a specific type. It allows you to filter the search results based on the type of file. The most common values for the argument are:
+f: Searches for regular files.
+d: Searches for directories.
+l: Searches for symbolic links.
 
 ## 3. `find <path> -mtime <days>`
 - -mtime: Searches for files that were modified a specific number of days ago
 
 **example1**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -mtime -5
 ```
-I use the `grep -w` to match the whole word "sainthood" under `skill-demo-data/written_2/travel_guides/berlitz2/*.txt`, it shows the whole word in the last sentense.
+I use the `find . -mtime -5` to search for all files in the skill-demo-data and its subdirectories that were modified less than 7 days ago. No result has been shown.
 
 **example2**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -mtime +5
 .
 ./.git
@@ -835,7 +838,7 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -mtime +5
 ./written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
 
 ```
-I use the `grep -w` to match the whole word "Lucayans" under `skill-demo-data/written_2/travel_guides/berlitz2/*.txt`, it shows that Bahamas-history has two paragraphs mention the whole word "Lucayans".
+I use the `find . -mtime +5` to searches for all files in the skill-demo-data and its subdirectories that were modified more than 7 days ago.
 
 - Base on examples, `find -mtime` can be useful when you want to search for files based on their modification date. The sign of the argument determines whether to search for files that were modified more than (+), less than (-), or exactly (=) the specified number of days ago. It is a powerful tool for locating files that have been modified recently or a long time ago.
 
@@ -843,7 +846,7 @@ I use the `grep -w` to match the whole word "Lucayans" under `skill-demo-data/wr
 - -size: Searches for files of a specific size
 
 **example1**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -size -100k
 .
 ./.git
@@ -1114,10 +1117,10 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -size -100k
 ./written_2/travel_guides/berlitz2/Beijing-WhatToDo.txt
 ./written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
 ```
-I use the `grep -n` to find the lines that match the word "sainthood" under `skill-demo-data/written_2/*.txt`, it shows the word is in the line 48 in Portugal-history.
+I use the `find . -size -100k` to search for all files in the skill-demo-data and its subdirectories that are smaller than 100 kilobytes
 
 **example2**
-```
+```console
 angelawang@Angelas-MacBook-Air skill-demo1-data % find . -size -10k 
 .
 ./.git
@@ -1211,6 +1214,6 @@ angelawang@Angelas-MacBook-Air skill-demo1-data % find . -size -10k
 ./written_2/travel_guides/berlitz2/Amsterdam-Intro.txt
 ./written_2/travel_guides/berlitz2/Athens-Intro.txt
 ```
-I use the `find -size` to find the lines that match the word "Lucayans" under `skill-demo-data/written_2/*.txt`, it shows the word is in the line 6 and 7 in Bahamas-history.
+I use the `find . -size -10k` to search for all files in the skill-demo-data and its subdirectories that are smaller than 10 kilobytes
 
 - Base on examples, `find -size` can be useful when you want to search for files based on their size. The size can be specified in bytes, kilobytes (with the suffix k or K), megabytes (with the suffix m or M), or gigabytes (with the suffix g or G).
